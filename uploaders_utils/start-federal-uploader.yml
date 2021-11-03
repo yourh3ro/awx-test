@@ -1,0 +1,11 @@
+---
+- name: Federal uploader docker compose run
+  hosts: localhost
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: FederalUploader | start Federal Uploader
+      shell:
+        cmd: docker-compose run n3.federaluploader /usr/bin/dotnet N3.FederalUploader.dll {{ uploader_args }}
+        args:
+          chdir: '{{ uploader_dir }}'

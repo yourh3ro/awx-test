@@ -1,0 +1,11 @@
+---
+- name: Document uploader docker compose run
+  hosts: localhost
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: DocumentUploader | start Document Uploader
+      shell:
+        cmd: docker-compose run n3.documentuploader /usr/bin/dotnet N3.DocumentUploader.dll {{ uploader_args }}
+        args:
+          chdir: '{{ uploader_dir }}'
